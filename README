@@ -1,0 +1,42 @@
+= flash_player_helper plugin
+
+Creates Flash MP3, Image Slideshow, Media, and FLV players for your views using Jeroen Wijering's Flash Players.
+Mixes itself into the ActionView::Base module, so no extra include is required.
+Adds the flash movies and javascript files to your Rails app so no downloading/setup is required
+See
+	- http://jroller.com/page/abstractScope for tutorials
+	- each flash player's (in assets/swf folder) accompanying README.html for its details.
+
+== License
+
+Flash SWF Files:
+The Flash files in the assets/swf folder are released under the terms of the Creative Commons License by Jeroen Wijering.
+If you plan on using the Flash files for commercial purposes, you MUST purchase them first from http://www.jeroenwijering.com/?order=form
+See each SWF files' accompanying README.html for license information.
+
+Flash Player Rails Helper: See flash_player_helper.rb or MIT-LICENSE.
+
+Unobtrusive Flash Objects: See ufo.js for license.
+
+== RubyForge
+
+* http://rubyforge.org/projects/flashplayrhelpr/
+
+== Resources
+
+Subversion
+
+* svn://rubyforge.org/var/svn/flashplayrhelpr (also serves as plugin resource)
+* http://rubyforge.org/viewvc/?root=flashplayrhelpr
+
+Blog
+
+* http://www.jroller.com/page/abstractScope
+
+Author
+
+* Farooq Ali farooq [at] thoughtworks [dot] com
+
+Jeroen Wijering's Flash Players
+
+* http://www.jeroenwijering.com
