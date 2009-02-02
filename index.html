@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>nazar/jw-playr-hlpr @ GitHub</title>
+	
+	<style type="text/css">
+		body {
+  		margin-top: 1.0em;
+  		background-color: #2f9ded;
+		  font-family: "helvetica"; 
+  		color: #000000;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+		h1 { font-size: 3.8em; color: #d06212; margin-bottom: 3px; }
+		h1 .small { font-size: 0.4em; }
+		h1 a { text-decoration: none }
+		h2 { font-size: 1.5em; color: #d06212; }
+    h3 { text-align: center; color: #d06212; }
+    a { color: #d06212; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+		pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+	</style>
+	
+</head>
+
+<body>
+  <a href="http://github.com/nazar/jw-playr-hlpr"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/nazar/jw-playr-hlpr/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/nazar/jw-playr-hlpr/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    </div>
+      
+    <h1><a href="http://github.com/nazar/jw-playr-hlpr">jw-playr-hlpr</a> 
+      <span class="small">by <a href="http://github.com/nazar">nazar</a></small></h1>
+
+    <div class="description">
+      *jw-playr-hlpr* is Rails plugin that presents an ActionView wrapper for rendering "JW Player 4.3":http://www.longtailvideo.com/players/jw-flv-player/ using SWOObject
+
+"JW Player":http://www.longtailvideo.com/players/jw-flv-player/ is a popular open source Media (FLV, MP4, MP3, AAC, JPG, PNG and GIF) player.
+
+    </div>
+
+    <p>The jw-playr-hlpr plugin adds the *player(player_options, flash_options)* function to all your views.
+
+*player_options* is a hash that can contain the player's "flashvars":http://developer.longtailvideo.com/trac/wiki/FlashVars variable. The minimum required is {:image  => '/path/from/public_html/video.flv').
+
+*flash_options* is an optional hash to contain additional or override "Adobe flash parameters":http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_12701&sliceId=2.
+
+The plugin defines the following default *flash_options:*
+<pre>
+ :player_id         => 'jw_player',
+ :id                => 'flash_player',
+ :allowfullscreen   => 'true',
+ :allowscriptaccess => 'true',
+ :play              => 'true',
+ :menu              => 'false',
+ :quality           => 'autohigh',
+ :scale             => 'default',
+ :width             => 400,
+ :height            => 300,
+</pre>
+To override the JW Player dimensions:
+
+@<%= player({:file => '/path/video.flv'},{:width => 640, :height => 480}) %>@</p><h2>Install</h2>
+<p># Download and extract  into vendor/plugins/jw-playr-hlpr
+# rake jw_player:install to copy over player.swf and swfobject.js to public/swf and pubilc/javascript
+# javascript_include_tag 'swfobject' in your application or page layout
+# inside your view <%= player (:file => '/library/video.flv', :image => '/library/splash.flv)' %> where :file is the FLV video to play and optionally :image which will render a splash image. *Note that both :file and :image are relative to your website's public folder. So if public = /home/my/site/public then :file => '/library/video.flv' will actually be in /home/my/site/public/library/video.flv*. The same applies to :image.</p>
+<h2>License</h2>
+<p>Copyright (c) 2006 Farooq Ali
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h2>Authors</h2>
+<p>Nazar Aziz (nazar@panthersoftware.com)<br/><br/>      </p>
+<h2>Contact</h2>
+<p>Nazar Aziz (mcnazar@gmail.com)<br/>      </p>
+
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/nazar/jw-playr-hlpr/zipball/master">zip</a> or
+      <a href="http://github.com/nazar/jw-playr-hlpr/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/nazar/jw-playr-hlpr</pre>
+    </p>
+      
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/nazar/jw-playr-hlpr">nazar/jw-playr-hlpr</a>
+    </div>
+    
+  </div>
+
+  <script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-919326-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
