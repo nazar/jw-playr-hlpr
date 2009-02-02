@@ -1,42 +1,45 @@
-= flash_player_helper plugin
+h1. JW Flash Player ActionView Helper
 
-Creates Flash MP3, Image Slideshow, Media, and FLV players for your views using Jeroen Wijering's Flash Players.
-Mixes itself into the ActionView::Base module, so no extra include is required.
-Adds the flash movies and javascript files to your Rails app so no downloading/setup is required
-See
-	- http://jroller.com/page/abstractScope for tutorials
-	- each flash player's (in assets/swf folder) accompanying README.html for its details.
+h2. What Is It?
 
-== License
+*jw-playr-hlpr* is Rails plugin that presents an ActionView wrapper for rendering "JW Player 4.3":http://www.longtailvideo.com/players/jw-flv-player/ using SWOObject
 
-Flash SWF Files:
-The Flash files in the assets/swf folder are released under the terms of the Creative Commons License by Jeroen Wijering.
-If you plan on using the Flash files for commercial purposes, you MUST purchase them first from http://www.jeroenwijering.com/?order=form
-See each SWF files' accompanying README.html for license information.
+"JW Player":http://www.longtailvideo.com/players/jw-flv-player/ is a popular open source Media (FLV, MP4, MP3, AAC, JPG, PNG and GIF) player.
 
-Flash Player Rails Helper: See flash_player_helper.rb or MIT-LICENSE.
+h2. Getting Started
 
-Unobtrusive Flash Objects: See ufo.js for license.
+# Download and extract  into vendor/plugins/jw-playr-hlpr
+# rake jw_player:install to copy over player.swf and swfobject.js to public/swf and pubilc/javascript
+# javascript_include_tag 'swfobject' in your application or page layout
+# inside your view <%= player (:file => '/library/video.flv', :image => '/library/splash.flv)' %> where :file is the FLV video to play and optionally :image which will render a splash image. *Note that both :file and :image are relative to your website's public folder. So if public = /home/my/site/public then :file => '/library/video.flv' will actually be in /home/my/site/public/library/video.flv*. The same applies to :image.
 
-== RubyForge
+h2. More Info
 
-* http://rubyforge.org/projects/flashplayrhelpr/
+The jw-playr-hlpr plugin adds the *player(player_options, flash_options)* function to all your views.
 
-== Resources
+*player_options* is a hash that can contain the player's "flashvars":http://developer.longtailvideo.com/trac/wiki/FlashVars variable. The minimum required is {:image  => '/path/from/public_html/video.flv').
 
-Subversion
+*flash_options* is an optional hash to contain additional or override "Adobe flash parameters":http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_12701&sliceId=2.
 
-* svn://rubyforge.org/var/svn/flashplayrhelpr (also serves as plugin resource)
-* http://rubyforge.org/viewvc/?root=flashplayrhelpr
+The plugin defines the following default *flash_options:*
+<pre>
+ :player_id         => 'jw_player',
+ :id                => 'flash_player',
+ :allowfullscreen   => 'true',
+ :allowscriptaccess => 'true',
+ :play              => 'true',
+ :menu              => 'false',
+ :quality           => 'autohigh',
+ :scale             => 'default',
+ :width             => 400,
+ :height            => 300,
+</pre>
+To override the JW Player dimensions:
 
-Blog
+@<%= player({:file => '/path/video.flv'},{:width => 640, :height => 480}) %>@
 
-* http://www.jroller.com/page/abstractScope
+h2. Credits
 
-Author
+This plugin is based on on "Farooq Ali's Flash Playr Hlpr":http://www.jroller.com/abstractScope/entry/flash_mp3_imageslideshow_media_player excellent plugin
 
-* Farooq Ali farooq [at] thoughtworks [dot] com
-
-Jeroen Wijering's Flash Players
-
-* http://www.jeroenwijering.com
+Farooq's Player includes JW Player 3.x and ufo.js. JW Player has since been updated to 4.x to support tasty new features likes skins, plugins and modules.
