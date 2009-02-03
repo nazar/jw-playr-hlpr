@@ -17,7 +17,7 @@ h2. More Info
 
 The jw-playr-hlpr plugin adds the *player(player_options, flash_options)* function to all your views.
 
-*player_options* is a hash that can contain the player's "flashvars":http://developer.longtailvideo.com/trac/wiki/FlashVars variable. The minimum required is {:image  => '/path/from/public_html/video.flv').
+*player_options* is a hash that can contain the player's "flashvars":http://developer.longtailvideo.com/trac/wiki/FlashVars variable. The minimum required is {:file  => '/path/from/public_html/video.flv').
 
 *flash_options* is an optional hash to contain additional or override "Adobe flash parameters":http://kb.adobe.com/selfservice/viewContent.do?externalId=tn_12701&sliceId=2.
 
