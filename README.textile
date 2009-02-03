@@ -38,6 +38,30 @@ To override the JW Player dimensions:
 
 @<%= player({:file => '/path/video.flv'},{:width => 640, :height => 480}) %>@
 
+h2. Skins
+
+I've added a selection of skins alongside this plugin:
+
+* "bluemetal":http://www.longtailvideo.com/addons/download-skin.php?addon=60
+* "snel":http://www.longtailvideo.com/addons/skins/24/Snel
+* "dangdang":http://www.longtailvideo.com/addons/skins/18/DangDang
+* "stijl":http://www.longtailvideo.com/addons/skins/25/Stijl
+
+Skins are copied to Rails.root/public/swf/skins and can be set either in the helper:
+
+<pre>
+  <%= player(:file => '/my/file/flv', :skin => 'bluemetal') %>
+</pre>
+
+Alternatively, a default skin can be specified globally by adding the following to your environment.rb:
+
+<pre>
+  PSP::JwPlayerHelper::DEFAULT_SKIN = 'bluemetal'
+</pre>
+
+The plugin assumes that all skin swf files will be stored in *Rails.root/public/swf/skins*. Any new skins can be placed in this folder.
+
+
 h2. Credits
 
 This plugin is based on on "Farooq Ali's Flash Playr Hlpr":http://www.jroller.com/abstractScope/entry/flash_mp3_imageslideshow_media_player excellent plugin
