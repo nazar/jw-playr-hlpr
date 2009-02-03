@@ -38,12 +38,17 @@ module PSP
                             } unless const_defined?('DEFAULT_FLASH_OPTIONS')
 
     FLASH_REQUIRED_MESSAGE = "You must enable JavaScript and install the <a href='http://www.flash.com'>Flash</a> plugin to view this player" unless const_defined?('FLASH_REQUIRED_MESSAGE')
+
+    DEFAULT_SKIN = '' unless const_defined?('DEFAULT_SKIN')
     
     # JW player helper
     def player(player_options = {}, flash_options = {})
       flash_options   = DEFAULT_FLASH_OPTIONS.dup.update(flash_options)
       container       = "#{flash_options[:id]}_container"
       msg             = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
+      #skin
+      skin = player_options[:skin].blank? ? DEFAULT_SKIN : player_options[:skin]
+      player_options[:skin] = "/swf/skins/#{skin}.swf" unless skin.blank?
       
       js = "var swf_obj = new SWFObject('/swf/player.swf','#{flash_options[:player_id]}','#{flash_options[:width]}','#{flash_options[:height]}','9');" <<
            options_for_swfobject(container, flash_options, player_options)
