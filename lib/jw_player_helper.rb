@@ -45,7 +45,7 @@ module PSP
       container       = "#{flash_options[:id]}_container"
       msg             = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
       #if DEFAULT_SKIN defined then use that, otherwise look in player_options[:skin]. Don't specify if neither are set
-      skin = player_options[:skin].blank? ? (const_defined?('DEFAULT_SKIN') ? DEFAULT_SKIN : '') : player_options[:skin]
+      skin = player_options[:skin].blank? ? (PSP::JwPlayerHelper.const_defined?('DEFAULT_SKIN') ? DEFAULT_SKIN : '') : player_options[:skin]
       player_options[:skin] = "/swf/skins/#{skin}.swf" unless skin.blank?
       
       js = "var swf_obj = new SWFObject('/swf/player.swf','#{flash_options[:player_id]}','#{flash_options[:width]}','#{flash_options[:height]}','9');" <<
