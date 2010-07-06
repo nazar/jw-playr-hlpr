@@ -2,13 +2,13 @@ h1. JW Flash Player ActionView Helper
 
 h2. What Is It?
 
-*jw-playr-hlpr* is Rails plugin that presents an ActionView wrapper for rendering "JW Player 4.3":http://www.longtailvideo.com/players/jw-flv-player/ using SWOObject
+*jw-playr-hlpr* is Rails plugin that presents an ActionView wrapper for rendering "JW Player 5.2":http://www.longtailvideo.com/players/jw-flv-player/ using SWOObject
 
 "JW Player":http://www.longtailvideo.com/players/jw-flv-player/ is a popular open source Media (FLV, MP4, MP3, AAC, JPG, PNG and GIF) player.
 
 h2. Getting Started
 
-# Download and extract  into vendor/plugins/jw-playr-hlpr
+# Download and extract into vendor/plugins/jw-playr-hlpr
 # rake jw_player:install to copy over player.swf and swfobject.js to public/swf and pubilc/javascript
 # javascript_include_tag 'swfobject' in your application or page layout
 # inside your view <%= player (:file => '/library/video.flv', :image => '/library/splash.flv)' %> where :file is the FLV video to play and optionally :image which will render a splash image. *Note that both :file and :image are relative to your website's public folder. So if public = /home/my/site/public then :file => '/library/video.flv' will actually be in /home/my/site/public/library/video.flv*. The same applies to :image.
@@ -33,6 +33,7 @@ The plugin defines the following default *flash_options:*
  :scale             => 'default',
  :width             => 400,
  :height            => 300,
+ :start             => 0
 </pre>
 To override the JW Player dimensions:
 

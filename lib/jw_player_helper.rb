@@ -1,3 +1,4 @@
+# Copyright (c) 2010 Fabio Neves - http://github.com/fzero
 # Copyright (c) 2009 Nazar Aziz - Panther Software Publishing Limited - nazar@panthersoftware.com
 #
 # Based on Farooq Ali's Flash Playr Hlpr - http://www.jroller.com/abstractScope/entry/flash_mp3_imageslideshow_media_player
@@ -25,25 +26,26 @@ module PSP
   module JwPlayerHelper
     
     DEFAULT_FLASH_OPTIONS = {
-                                :player_id         => 'jw_player',
-                                :id                => 'flash_player',
-                                :allowfullscreen   => 'true',
-                                :allowscriptaccess => 'true',
-                                :play              => 'true',
-                                :menu              => 'false',
-                                :quality           => 'autohigh',
-                                :scale             => 'default',
-                                :width             => 400,
-                                :height            => 300,
-                            } unless const_defined?('DEFAULT_FLASH_OPTIONS')
+      :player_id         => 'jw_player',
+      :id                => 'flash_player',
+      :allowfullscreen   => 'true',
+      :allowscriptaccess => 'true',
+      :play              => 'true',
+      :menu              => 'false',
+      :quality           => 'autohigh',
+      :scale             => 'default',
+      :width             => 400,
+      :height            => 300,
+      :start             => 0,
+    } unless const_defined?('DEFAULT_FLASH_OPTIONS')
 
     FLASH_REQUIRED_MESSAGE = "You must enable JavaScript and install the <a href='http://www.flash.com'>Flash</a> plugin to view this player" unless const_defined?('FLASH_REQUIRED_MESSAGE')
 
     # JW player helper
     def player(player_options = {}, flash_options = {})
-      flash_options   = DEFAULT_FLASH_OPTIONS.dup.update(flash_options)
-      container       = "#{flash_options[:id]}_container"
-      msg             = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
+      flash_options = DEFAULT_FLASH_OPTIONS.dup.update(flash_options)
+      container     = "#{flash_options[:id]}_container"
+      msg           = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
       #if DEFAULT_SKIN defined then use that, otherwise look in player_options[:skin]. Don't specify if neither are set
       skin = player_options[:skin].blank? ? (PSP::JwPlayerHelper.const_defined?('DEFAULT_SKIN') ? DEFAULT_SKIN : '') : player_options[:skin]
       player_options[:skin] = "/swf/skins/#{skin}.swf" unless skin.blank?
@@ -73,7 +75,6 @@ module PSP
       flash_script = swfobject_params(options.merge({:flashvars => flashvars}))
       flash_script << ";swf_obj.write('#{dom_id}');"
     end
-
 
   end
 end
