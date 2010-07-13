@@ -36,7 +36,7 @@ module PSP
       :scale             => 'default',
       :width             => 400,
       :height            => 300,
-      :start             => 0,
+      :start             => '0',
     } unless const_defined?('DEFAULT_FLASH_OPTIONS')
 
     FLASH_REQUIRED_MESSAGE = "You must enable JavaScript and install the <a href='http://www.flash.com'>Flash</a> plugin to view this player" unless const_defined?('FLASH_REQUIRED_MESSAGE')
@@ -44,8 +44,14 @@ module PSP
     # JW player helper
     def player(player_options = {}, flash_options = {})
       flash_options = DEFAULT_FLASH_OPTIONS.dup.update(flash_options)
-      container     = "#{flash_options[:id]}_container"
-      msg           = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
+      # Parsing time
+      time = flash_options[:start].split(':')
+      sec = time.pop
+      min = time.pop
+      hr = time.pop
+      flash_options[:start] = sec.to_i + min.to_i.minutes + hr.to_i.hours
+      container = "#{flash_options[:id]}_container"
+      msg = flash_options[:flash_required_message].nil? ? FLASH_REQUIRED_MESSAGE : flash_options[:flash_required_message]
       #if DEFAULT_SKIN defined then use that, otherwise look in player_options[:skin]. Don't specify if neither are set
       skin = player_options[:skin].blank? ? (PSP::JwPlayerHelper.const_defined?('DEFAULT_SKIN') ? DEFAULT_SKIN : '') : player_options[:skin]
       player_options[:skin] = "/swf/skins/#{skin}.swf" unless skin.blank?
@@ -70,7 +76,7 @@ module PSP
       options = flash_options.dup
       [:id, :player_id].each{|key| options.delete(key)}
       #flashvars first
-      flashvars    = flashvars_params(player_options)
+      flashvars = flashvars_params(player_options)
       #finally swf params, including the constructed flashvars
       flash_script = swfobject_params(options.merge({:flashvars => flashvars}))
       flash_script << ";swf_obj.write('#{dom_id}');"
